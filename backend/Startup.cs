@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ShoppR.Business;
+using ShoppR.Business.Types;
 using ShoppR.Data;
 using ShoppR.Settings;
 
@@ -27,6 +28,9 @@ namespace ShoppR
             services.AddGraphQL(SchemaBuilder.New()
                 .EnableRelaySupport()
                 .AddQueryType<Query>()
+                .AddType<UserType>()
+                .AddType<ProductType>()
+                .AddType<DemandType>()
                 .BindClrType<Guid, IdType>()
                 .Create());
         }
