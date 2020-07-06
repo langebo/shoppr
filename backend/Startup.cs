@@ -1,6 +1,7 @@
 using System;
 using HotChocolate;
 using HotChocolate.AspNetCore;
+using HotChocolate.Execution.Configuration;
 using HotChocolate.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -32,11 +33,19 @@ namespace ShoppR
                 .AddType<ProductType>()
                 .AddType<DemandType>()
                 .BindClrType<Guid, IdType>()
-                .Create());
+                .BindClrType<DateTime, DateTimeType>()
+                .Create(), new QueryExecutionOptions { ForceSerialExecution = true });
+
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseCors(cors => cors
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod());
+
             app.UseRouting();
             app.UseWebSockets();
             app.UseGraphQL();
