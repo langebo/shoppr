@@ -10,8 +10,8 @@ using ShoppR.Data;
 namespace ShoppR.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200630210235_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200702095902_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

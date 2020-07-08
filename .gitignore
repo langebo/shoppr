@@ -334,7 +334,6 @@ ASALocalRun/
 
 build
 node_modules
-public
 logs
 .zip
 .dll

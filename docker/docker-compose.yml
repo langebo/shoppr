@@ -8,3 +8,13 @@ services:
       POSTGRES_PASSWORD: pass
     ports:
       - '5432:5432'
+
+  shoppr:
+    image: shoppr
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    environment:
+      CONNECTIONSTRINGS:POSTGRES: Host=postgres;Username=user;Password=pass;Database=shoppr-db
+    ports:
+      - 5000:80

@@ -1,0 +1,245 @@
+schema {
+  query: Query
+}
+
+"The node interface is implemented by entities that have a gloabl unique identifier."
+interface Node {
+  id: ID!
+}
+
+type Demand implements Node {
+  createdAt: DateTime!
+  id: ID!
+  product: Product
+  user: User
+}
+
+"A connection to a list of items."
+type DemandConnection {
+  "A list of edges."
+  edges: [DemandEdge!]
+  "A flattened list of the nodes."
+  nodes: [Demand]
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"An edge in a connection."
+type DemandEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: Demand
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+  "When paginating forwards, the cursor to continue."
+  endCursor: String
+  "Indicates whether more edges exist following the set defined by the clients arguments."
+  hasNextPage: Boolean!
+  "Indicates whether more edges exist prior the set defined by the clients arguments."
+  hasPreviousPage: Boolean!
+  "When paginating backwards, the cursor to continue."
+  startCursor: String
+}
+
+type Product implements Node {
+  id: ID!
+  title: ID
+}
+
+"A connection to a list of items."
+type ProductConnection {
+  "A list of edges."
+  edges: [ProductEdge!]
+  "A flattened list of the nodes."
+  nodes: [Product]
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"An edge in a connection."
+type ProductEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: Product
+}
+
+type Query {
+  demands(after: String before: String first: PaginationAmount last: PaginationAmount order_by: DemandSort where: DemandFilter): DemandConnection
+  node(id: ID!): Node
+  products(after: String before: String first: PaginationAmount last: PaginationAmount order_by: ProductSort where: ProductFilter): ProductConnection
+  users(after: String before: String first: PaginationAmount last: PaginationAmount order_by: UserSort where: UserFilter): UserConnection
+}
+
+type User implements Node {
+  email: ID
+  firstName: ID
+  id: ID!
+  surname: ID
+}
+
+"A connection to a list of items."
+type UserConnection {
+  "A list of edges."
+  edges: [UserEdge!]
+  "A flattened list of the nodes."
+  nodes: [User]
+  "Information to aid in pagination."
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+"An edge in a connection."
+type UserEdge {
+  "A cursor for use in pagination."
+  cursor: String!
+  "The item at the end of the edge."
+  node: User
+}
+
+input DemandFilter {
+  AND: [DemandFilter!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_gt: DateTime
+  createdAt_not_gte: DateTime
+  createdAt_not_in: [DateTime!]
+  createdAt_not_lt: DateTime
+  createdAt_not_lte: DateTime
+  id: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_gt: ID
+  id_not_gte: ID
+  id_not_in: [ID!]
+  id_not_lt: ID
+  id_not_lte: ID
+  OR: [DemandFilter!]
+}
+
+input DemandSort {
+  createdAt: SortOperationKind
+  id: SortOperationKind
+}
+
+input ProductFilter {
+  AND: [ProductFilter!]
+  id: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_gt: ID
+  id_not_gte: ID
+  id_not_in: [ID!]
+  id_not_lt: ID
+  id_not_lte: ID
+  OR: [ProductFilter!]
+  title: ID
+  title_contains: ID
+  title_ends_with: ID
+  title_in: [ID]
+  title_not: ID
+  title_not_contains: ID
+  title_not_ends_with: ID
+  title_not_in: [ID]
+  title_not_starts_with: ID
+  title_starts_with: ID
+}
+
+input ProductSort {
+  id: SortOperationKind
+  title: SortOperationKind
+}
+
+input UserFilter {
+  AND: [UserFilter!]
+  email: ID
+  email_contains: ID
+  email_ends_with: ID
+  email_in: [ID]
+  email_not: ID
+  email_not_contains: ID
+  email_not_ends_with: ID
+  email_not_in: [ID]
+  email_not_starts_with: ID
+  email_starts_with: ID
+  firstName: ID
+  firstName_contains: ID
+  firstName_ends_with: ID
+  firstName_in: [ID]
+  firstName_not: ID
+  firstName_not_contains: ID
+  firstName_not_ends_with: ID
+  firstName_not_in: [ID]
+  firstName_not_starts_with: ID
+  firstName_starts_with: ID
+  id: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_gt: ID
+  id_not_gte: ID
+  id_not_in: [ID!]
+  id_not_lt: ID
+  id_not_lte: ID
+  OR: [UserFilter!]
+  surname: ID
+  surname_contains: ID
+  surname_ends_with: ID
+  surname_in: [ID]
+  surname_not: ID
+  surname_not_contains: ID
+  surname_not_ends_with: ID
+  surname_not_in: [ID]
+  surname_not_starts_with: ID
+  surname_starts_with: ID
+}
+
+input UserSort {
+  email: SortOperationKind
+  firstName: SortOperationKind
+  id: SortOperationKind
+  surname: SortOperationKind
+}
+
+enum SortOperationKind {
+  ASC
+  DESC
+}
+
+"The `Boolean` scalar type represents `true` or `false`."
+scalar Boolean
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime
+
+"The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `\"4\"`) or integer (such as `4`) input value will be accepted as an ID."
+scalar ID
+
+"The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1."
+scalar Int
+
+scalar PaginationAmount
+
+"The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text."
+scalar String
