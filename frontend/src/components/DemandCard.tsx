@@ -10,18 +10,17 @@ export interface IDemandCardProps {
 }
 
 const DemandCard: React.FC<IDemandCardProps> = (props) => {
-  const { demand } = props;
-
-  const parsedCreatedAt = new Date(demand.createdAt as string);
+  const { id, product, user, createdAt } = props.demand;
+  const createdAtDate = new Date(createdAt);
 
   return (
-    <Container key={demand.id}>
-      {demand.product && <ProductCard product={demand.product} />}
-      {demand.user && <UserCard user={demand.user} />}
+    <Container key={id}>
+      {product && <ProductCard product={product} />}
+      {user && <UserCard user={user} />}
       <DateWrapper>
         <Info>added at</Info>
-        <DateText>{parsedCreatedAt.toLocaleDateString()}</DateText>
-        <TimeText>{parsedCreatedAt.toLocaleTimeString()}</TimeText>
+        <DateText>{createdAtDate.toLocaleDateString('de-DE')}</DateText>
+        <TimeText>{createdAtDate.toLocaleTimeString('de-DE')}</TimeText>
       </DateWrapper>
     </Container>
   );
@@ -53,7 +52,7 @@ const DateWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 33vw;
+  width: 20vw;
 `;
 
 const Info = styled.span`

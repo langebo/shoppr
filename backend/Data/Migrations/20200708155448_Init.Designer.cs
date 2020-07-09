@@ -10,7 +10,7 @@ using ShoppR.Data;
 namespace ShoppR.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20200702095902_Init")]
+    [Migration("20200708155448_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,8 +27,8 @@ namespace ShoppR.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTimeOffset>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uuid");

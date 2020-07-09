@@ -30,7 +30,7 @@ export default createFragmentContainer(ProductCard, {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 33vw;
+  width: 50vw;
 `;
 
 const Title = styled.div`

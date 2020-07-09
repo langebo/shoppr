@@ -2,15 +2,14 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using HotChocolate;
 using HotChocolate.Types.Relay;
-using ShoppR.Models.Abstractions;
 
 namespace ShoppR.Models.Entities
 {
-    public class Demand : IEntity, INode
+    public class Demand : INode
     {
         [Key]
         public Guid Id { get; set; }
-        public DateTimeOffset CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [GraphQLIgnore]
         public Guid ProductId { get; set; }

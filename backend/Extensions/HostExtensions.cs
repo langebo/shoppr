@@ -46,12 +46,12 @@ namespace ShoppR.Extensions
             var products = new Faker<Product>()
                 .StrictMode(true)
                 .RuleFor(p => p.Id, f => Guid.NewGuid())
-                .RuleFor(p => p.Title, f => f.Commerce.Product())
+                .RuleFor(p => p.Title, f => f.Commerce.ProductName())
                 .Generate(78);
 
             var demands = new Faker<Demand>()
                 .RuleFor(d => d.Id, f => Guid.NewGuid())
-                .RuleFor(d => d.CreatedAt, f => f.Date.BetweenOffset(DateTimeOffset.Now.AddYears(-2), DateTimeOffset.Now))
+                .RuleFor(d => d.CreatedAt, f => f.Date.Between(DateTime.UtcNow.AddYears(-2), DateTime.UtcNow))
                 .RuleFor(d => d.ProductId, f => f.PickRandom(products).Id)
                 .RuleFor(d => d.UserId, f => f.PickRandom(users).Id)
                 .Generate(312);

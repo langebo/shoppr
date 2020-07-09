@@ -5,7 +5,7 @@ import { ReaderFragment } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
 export type DemandCard_demand = {
     readonly id: string;
-    readonly createdAt: unknown;
+    readonly createdAt: string;
     readonly user: {
         readonly " $fragmentRefs": FragmentRefs<"UserCard_user">;
     } | null;
