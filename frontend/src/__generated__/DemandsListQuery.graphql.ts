@@ -8,7 +8,7 @@ export type DemandsListQueryResponse = {
     readonly demands: {
         readonly nodes: ReadonlyArray<{
             readonly id: string;
-            readonly createdAt: unknown;
+            readonly createdAt: string;
             readonly " $fragmentRefs": FragmentRefs<"DemandCard_demand">;
         } | null> | null;
     } | null;

@@ -18,7 +18,7 @@ const query = graphql`
   }
 `;
 
-const DemandsList: React.FC = () => {
+const DemandsList = () => {
   return (
     <QueryRenderer<DemandsListQuery>
       environment={RelayEnvironment}

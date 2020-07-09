@@ -36,7 +36,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 33vw;
+  width: 30vw;
 `;
 
 const Name = styled.span`

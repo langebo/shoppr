@@ -1,11 +1,10 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using HotChocolate.Types.Relay;
-using ShoppR.Models.Abstractions;
 
 namespace ShoppR.Models.Entities
 {
-    public class User : IEntity, INode
+    public class User : INode
     {
         [Key]
         public Guid Id { get; set; }

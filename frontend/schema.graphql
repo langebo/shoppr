@@ -47,7 +47,7 @@ type PageInfo {
 
 type Product implements Node {
   id: ID!
-  title: ID
+  title: String
 }
 
 "A connection to a list of items."
@@ -77,10 +77,10 @@ type Query {
 }
 
 type User implements Node {
-  email: ID
-  firstName: ID
+  email: String
+  firstName: String
   id: ID!
-  surname: ID
+  surname: String
 }
 
 "A connection to a list of items."
@@ -116,18 +116,18 @@ input DemandFilter {
   createdAt_not_in: [DateTime!]
   createdAt_not_lt: DateTime
   createdAt_not_lte: DateTime
-  id: ID
-  id_gt: ID
-  id_gte: ID
-  id_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_not: ID
-  id_not_gt: ID
-  id_not_gte: ID
-  id_not_in: [ID!]
-  id_not_lt: ID
-  id_not_lte: ID
+  id: Uuid
+  id_gt: Uuid
+  id_gte: Uuid
+  id_in: [Uuid!]
+  id_lt: Uuid
+  id_lte: Uuid
+  id_not: Uuid
+  id_not_gt: Uuid
+  id_not_gte: Uuid
+  id_not_in: [Uuid!]
+  id_not_lt: Uuid
+  id_not_lte: Uuid
   OR: [DemandFilter!]
 }
 
@@ -138,29 +138,29 @@ input DemandSort {
 
 input ProductFilter {
   AND: [ProductFilter!]
-  id: ID
-  id_gt: ID
-  id_gte: ID
-  id_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_not: ID
-  id_not_gt: ID
-  id_not_gte: ID
-  id_not_in: [ID!]
-  id_not_lt: ID
-  id_not_lte: ID
+  id: Uuid
+  id_gt: Uuid
+  id_gte: Uuid
+  id_in: [Uuid!]
+  id_lt: Uuid
+  id_lte: Uuid
+  id_not: Uuid
+  id_not_gt: Uuid
+  id_not_gte: Uuid
+  id_not_in: [Uuid!]
+  id_not_lt: Uuid
+  id_not_lte: Uuid
   OR: [ProductFilter!]
-  title: ID
-  title_contains: ID
-  title_ends_with: ID
-  title_in: [ID]
-  title_not: ID
-  title_not_contains: ID
-  title_not_ends_with: ID
-  title_not_in: [ID]
-  title_not_starts_with: ID
-  title_starts_with: ID
+  title: String
+  title_contains: String
+  title_ends_with: String
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_ends_with: String
+  title_not_in: [String]
+  title_not_starts_with: String
+  title_starts_with: String
 }
 
 input ProductSort {
@@ -170,49 +170,49 @@ input ProductSort {
 
 input UserFilter {
   AND: [UserFilter!]
-  email: ID
-  email_contains: ID
-  email_ends_with: ID
-  email_in: [ID]
-  email_not: ID
-  email_not_contains: ID
-  email_not_ends_with: ID
-  email_not_in: [ID]
-  email_not_starts_with: ID
-  email_starts_with: ID
-  firstName: ID
-  firstName_contains: ID
-  firstName_ends_with: ID
-  firstName_in: [ID]
-  firstName_not: ID
-  firstName_not_contains: ID
-  firstName_not_ends_with: ID
-  firstName_not_in: [ID]
-  firstName_not_starts_with: ID
-  firstName_starts_with: ID
-  id: ID
-  id_gt: ID
-  id_gte: ID
-  id_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_not: ID
-  id_not_gt: ID
-  id_not_gte: ID
-  id_not_in: [ID!]
-  id_not_lt: ID
-  id_not_lte: ID
+  email: String
+  email_contains: String
+  email_ends_with: String
+  email_in: [String]
+  email_not: String
+  email_not_contains: String
+  email_not_ends_with: String
+  email_not_in: [String]
+  email_not_starts_with: String
+  email_starts_with: String
+  firstName: String
+  firstName_contains: String
+  firstName_ends_with: String
+  firstName_in: [String]
+  firstName_not: String
+  firstName_not_contains: String
+  firstName_not_ends_with: String
+  firstName_not_in: [String]
+  firstName_not_starts_with: String
+  firstName_starts_with: String
+  id: Uuid
+  id_gt: Uuid
+  id_gte: Uuid
+  id_in: [Uuid!]
+  id_lt: Uuid
+  id_lte: Uuid
+  id_not: Uuid
+  id_not_gt: Uuid
+  id_not_gte: Uuid
+  id_not_in: [Uuid!]
+  id_not_lt: Uuid
+  id_not_lte: Uuid
   OR: [UserFilter!]
-  surname: ID
-  surname_contains: ID
-  surname_ends_with: ID
-  surname_in: [ID]
-  surname_not: ID
-  surname_not_contains: ID
-  surname_not_ends_with: ID
-  surname_not_in: [ID]
-  surname_not_starts_with: ID
-  surname_starts_with: ID
+  surname: String
+  surname_contains: String
+  surname_ends_with: String
+  surname_in: [String]
+  surname_not: String
+  surname_not_contains: String
+  surname_not_ends_with: String
+  surname_not_in: [String]
+  surname_not_starts_with: String
+  surname_starts_with: String
 }
 
 input UserSort {
@@ -243,3 +243,5 @@ scalar PaginationAmount
 
 "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text."
 scalar String
+
+scalar Uuid
